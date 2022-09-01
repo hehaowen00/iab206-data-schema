@@ -1,14 +1,8 @@
 import { faker } from '@faker-js/faker';
 
-async function generate_data() {
+function generate_data() {
   let web_presence = [];
   let n = Math.floor(Math.random() * 4);
-  for (let i = 0; i < n; i++) {
-    web_presence.push(faker.internet.url());
-  }
-
-  let skills = [];
-  n = Math.floor(Math.random() * 4);
   for (let i = 0; i < n; i++) {
     web_presence.push(faker.internet.url());
   }
@@ -26,10 +20,10 @@ async function generate_data() {
     name: faker.name.fullName(),
     age,
     web_presence,
-    skills,
+    skills: [],
     organisation,
     years: age * 0.3 < 5 ? 5 : age * 0.3,
-    url: "",
+    url: faker.internet.url(),
     meeting: {
       at: faker.date.recent(),
       street: faker.address.streetAddress(),
@@ -46,4 +40,4 @@ async function generate_data() {
   }
 }
 
-console.log(await generate_data());
+console.log(JSON.stringify(generate_data(), null, 2));
