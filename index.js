@@ -10,11 +10,25 @@ function generate_data() {
   let organisation = {
     name: faker.company.name(),
     job: faker.name.jobType(),
-    pos: faker.name.jobTitle(),
+    position: faker.name.jobTitle(),
     address: faker.name.jobArea(),
   };
 
   let age = faker.datatype.number({ min: 25, max: 60 });
+
+  let history = [];
+
+  n = Math.floor(Math.random() * 4);
+
+  for (let i = 0; i < n; i++) {
+    let job = {
+      name: faker.company.name(),
+      job: faker.name.jobType(),
+      position: faker.name.jobTitle(),
+      address: faker.name.jobArea(),
+    };
+    history.push(job);
+  }
 
   return {
     name: faker.name.fullName(),
@@ -36,6 +50,7 @@ function generate_data() {
       home: faker.internet.email(),
       work: faker.internet.email(),
     },
+    history,
     related: []
   }
 }
